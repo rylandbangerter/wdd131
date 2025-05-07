@@ -14,7 +14,6 @@ img {
   width: 250px;
   object-fit: cover;
   border: 8px solid white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
 }
 
@@ -73,11 +72,13 @@ h1 {
 figure {
   padding: 1rem;
   background-color: white;
-  display: flex; /* Optional: Center content if needed */
-  justify-content: center; /* Center the image horizontally */
-  align-items: center; /* Center the image vertically */
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
   box-sizing: border-box;
 }
+
 
 @media screen and (min-width: 600px) {
   .gallery {
