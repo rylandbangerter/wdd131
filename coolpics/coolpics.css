@@ -15,7 +15,7 @@ img {
   object-fit: cover;
   border: 8px solid white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  /* background-color: white; */
+  box-sizing: border-box;
 }
 
 button {
@@ -41,9 +41,11 @@ nav {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+}
+
+a {
+  display: block;
+  text-align: center;
 }
 
 header {
@@ -64,11 +66,17 @@ h1 {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
+  justify-content: center;
+  max-width: 100%;
 }
 
 figure {
   padding: 1rem;
-  background-color: #fff;
+  background-color: white;
+  display: flex; /* Optional: Center content if needed */
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  box-sizing: border-box;
 }
 
 @media screen and (min-width: 600px) {
@@ -79,6 +87,9 @@ figure {
     display: flex;
     justify-content: space-around;
     align-items: center;
+  }
+  a {
+    display: none;
   }
 }
 
@@ -93,5 +104,8 @@ figure {
     display: flex;
     justify-content: space-around;
     align-items: center;
+  }
+  a {
+    display: inline;
   }
 }
