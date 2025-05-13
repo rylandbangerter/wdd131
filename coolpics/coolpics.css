@@ -9,9 +9,8 @@
   --secondary-font: Mooli, san-serif;
 }
 img {
-  max-width: 100%;
+   width: 250px;
   height: 250px;
-  width: 250px;
   object-fit: cover;
   border: 10px solid white;
   box-sizing: border-box;
@@ -36,10 +35,17 @@ a:visited,
 nav {
   color: var(--text-light);
 }
+.hide {
+	display: none;
+}
 nav {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+ul {
+  list-style-type: none;;
 }
 
 a {
@@ -64,15 +70,21 @@ h1 {
 .gallery {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 1rem;
+  gap: 1rem;
   justify-content: center;
-  max-width: 100%;
+  max-width: 900px;
+  margin: 0 auto;   
+  padding: 1rem;
 }
 
+
 figure {
-  padding: 1rem;
+  width: 270px;
+  height: 270px;
   background-color: white;
-  display: flex; 
+  padding: 0;
+  margin: 0;
+  display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 12px 24px rgba(0, 0, 0, .95);
@@ -97,9 +109,6 @@ figure {
 @media screen and (min-width: 850px) {
   .gallery {
     grid-template-columns: 1fr 1fr 1fr;
-  }
-  button {
-    display: none;
   }
   nav {
     display: flex;
