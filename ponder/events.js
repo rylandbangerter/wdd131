@@ -2,7 +2,9 @@ function newTask() {
     // get the list element
       const listElement = document.querySelector('#todoList');
     // get the value entered into the #todo input
+    // the .value property gets the value of the input that we actually want
       const task = document.querySelector('#todo').value;
+      document.querySelector('#todo').value = '';
     // render out the list
     listElement.innerHTML += `
       <li> ${task}
