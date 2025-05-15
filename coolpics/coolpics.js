@@ -11,7 +11,6 @@ if (menuButton) {
   menuButton.addEventListener("click", toggleMenu);
 }
 
-
 function handleResize() {
   const menu = document.querySelector(".menu");
   if (window.innerWidth > 1000) {
@@ -24,32 +23,33 @@ function handleResize() {
 handleResize();
 window.addEventListener("resize", handleResize);
 
-function viewerTemplate(path, alt) {
-  return `
-    <div class="viewer">
-      <button class="close-viewer">X</button>
-      <img src="${path}" alt="${alt}">
-    </div>
-  `;
-}
+// Modal Image Viewer
+const figures = document.querySelectorAll(".gallery figure img");
 
-function viewHandler(event) {
-  const clicked = event.target;
-  if (clicked.tagName === "IMG") {
-    const src = clicked.getAttribute("src");
-    const base = src.split("-")[0];
-    const fullImg = `${base}-full.jpeg`;
-    const alt = clicked.getAttribute("alt");
+figures.forEach((img) => {
+  img.addEventListener("click", () => {
+    const viewer = document.createElement("div");
+    viewer.classList.add("viewer");
 
-    const viewer = viewerTemplate(fullImg, alt);
-    document.body.insertAdjacentHTML("afterbegin", viewer);
+    const fullImage = document.createElement("img");
+    fullImage.src = img.src.replace("-sm", "-full"); // optional: use full-size image
+    fullImage.alt = img.alt;
 
-    document.querySelector(".close-viewer").addEventListener("click", closeViewer);
-  }
-}
+    const closeButton = document.createElement("button");
+    closeButton.classList.add("close-viewer");
+    closeButton.textContent = "✖";
 
-function closeViewer() {
-  document.querySelector(".viewer").remove();
-}
+    closeButton.addEventListener("click", () => viewer.remove());
 
-document.querySelector(".gallery").addEventListener("click", viewHandler);
+    // Close modal when clicking outside the image
+    viewer.addEventListener("click", (e) => {
+      if (e.target === viewer) {
+        viewer.remove();
+      }
+    });
+
+    viewer.appendChild(fullImage);
+    viewer.appendChild(closeButton);
+    document.body.appendChild(viewer);
+  });
+});

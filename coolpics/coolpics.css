@@ -127,8 +127,8 @@ figure {
 }
 
 .viewer img {
-  width: 600px;
-  height: 500px;
+  max-width: 90%;
+  max-height: 90%;
 }
 
 .close-viewer {
