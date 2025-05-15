@@ -1,63 +1,55 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Menu toggle
-  const menuButton = document.querySelector(".menu-button");
+const menuButton = document.querySelector(".menu-button");
+
+function toggleMenu() {
   const menu = document.querySelector(".menu");
-
-  menuButton.addEventListener("click", () => {
+  if (menu) {
     menu.classList.toggle("hide");
-  });
-
-  function handleResize() {
-    if (window.innerWidth > 1000) {
-      menu.classList.remove("hide");
-    } else {
-      menu.classList.add("hide");
-    }
   }
-  window.addEventListener("resize", handleResize);
-  handleResize();
+}
 
-  // Modal logic
-  const gallery = document.querySelector(".gallery");
+if (menuButton) {
+  menuButton.addEventListener("click", toggleMenu);
+}
 
-  // Only create the modal once
-  const modal = document.createElement("dialog");
-  modal.classList.add("image-modal");
-  modal.innerHTML = `
-    <button class="close-viewer">X</button>
-    <img class="modal-image" src="" alt="">
+
+function handleResize() {
+  const menu = document.querySelector(".menu");
+  if (window.innerWidth > 1000) {
+    menu.classList.remove("hide");
+  } else {
+    menu.classList.add("hide");
+  }
+}
+
+handleResize();
+window.addEventListener("resize", handleResize);
+
+function viewerTemplate(path, alt) {
+  return `
+    <div class="viewer">
+      <button class="close-viewer">X</button>
+      <img src="${path}" alt="${alt}">
+    </div>
   `;
-  document.body.appendChild(modal);
+}
 
-  const modalImage = modal.querySelector(".modal-image");
-  const closeButton = modal.querySelector(".close-viewer");
+function viewHandler(event) {
+  const clicked = event.target;
+  if (clicked.tagName === "IMG") {
+    const src = clicked.getAttribute("src");
+    const base = src.split("-")[0];
+    const fullImg = `${base}-full.jpeg`;
+    const alt = clicked.getAttribute("alt");
 
-  gallery.addEventListener("click", (event) => {
-    const img = event.target.closest("img");
-    if (!img) return;
+    const viewer = viewerTemplate(fullImg, alt);
+    document.body.insertAdjacentHTML("afterbegin", viewer);
 
-    const src = img.getAttribute("src");
-    const alt = img.getAttribute("alt");
-    const highResSrc = src.replace("-sm.jpeg", "-full.jpeg");
+    document.querySelector(".close-viewer").addEventListener("click", closeViewer);
+  }
+}
 
-    modalImage.setAttribute("src", highResSrc);
-    modalImage.setAttribute("alt", alt);
-    modal.showModal();
-  });
+function closeViewer() {
+  document.querySelector(".viewer").remove();
+}
 
-  closeButton.addEventListener("click", () => {
-    modal.close();
-  });
-
-  modal.addEventListener("click", (event) => {
-    const rect = modalImage.getBoundingClientRect();
-    if (
-      event.clientX < rect.left ||
-      event.clientX > rect.right ||
-      event.clientY < rect.top ||
-      event.clientY > rect.bottom
-    ) {
-      modal.close();
-    }
-  });
-});
+document.querySelector(".gallery").addEventListener("click", viewHandler);
