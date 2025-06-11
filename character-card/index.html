@@ -1,26 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A fun RPG-style character card for a Swamp Beat Diplomat named Snortleblat." />
-  <meta name="author" content="Ryland Bangerter" />
-  <link rel="icon" href="../favicon.png`" />
-  <script src="script.js" defer ></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A fun RPG-style character card for a Swamp Beat Diplomat named Snortleblat."
+    />
+    <meta name="author" content="Ryland Bangerter" />
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <script src="script.js" defer></script>
+    <meta property="og:title" content="Snortleblat Character Card" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="View stats, level up, and battle as Snortleblat!"
+    />
+    <meta
+      property="og:image"
+      content="https://opengameart.org/sites/default/files/rpg_character_sprites_-_preview.gif"
+    />
+    <meta
+      property="og:url"
+      content="https://rylandbangerter.github.io/character-card/"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Character Card</title>
+    <link rel="stylesheet" href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="card">
+      <img class="image" src="#" alt="#" />
+      <div class="name"></div>
+      <div class="stats">
+        <p><strong>Class:</strong> <span id="class"></span></p>
+        <p><strong>Level:</strong> <span id="level"></span></p>
+        <p><strong>Health:</strong> <span id="health"></span></p>
+      </div>
 
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Snortleblat Character Card" />
-  <meta property="og:type" content="website" />
-  <meta property="og:description" content="View stats, level up, and battle as Snortleblat!" />
-  <meta property="og:image" content="https://andejuli.github.io/img/snortleblat.png" />
-  <meta property="og:url" content="https://rylandbangerter.github.io/character-card/" />
+      <div class="buttons">
+        <button id="attacked">Attacked</button>
+        <button id="levelup">Level Up</button>
+      </div>
 
-  <!-- Twitter Meta -->
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <title>Character Card</title>
-  <link href="styles.css" rel="stylesheet" />
-</head>
-<body>
-</body>
+      <p id="log"></p>
+    </div>
+  </body>
 </html>
