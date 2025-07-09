@@ -197,7 +197,7 @@ function renderBooks() {
     <div class="book-card">
       <h4>${title}</h4>
       <p><strong>Genre:</strong> ${genres[title] || "Unknown"}</p>
-      <img src="images/${title.toLowerCase().replace(/ /g, '-')}.jpg" alt="${title} cover">
+      <img src="images/${title.toLowerCase().replace(/ /g, '-')}.jpg" alt="${title} cover" loading="lazy">
       <p>${descriptions[title] || "No description available."}</p>
       <div class="buttons">
         <button onclick="markBook(this, 'want')">Want to Read</button>
@@ -210,14 +210,24 @@ function renderBooks() {
 function renderFeaturedBooks() {
   const section = document.querySelector('.featured-books');
   if (!section) return;
-  const featuredBooks = shuffleArray([...books]).slice(0, 3);
+
+  const favoriteBooks = [
+    "Powerless",
+    "A Good Girl's Guide to Murder",
+    "Unravel Me"
+  ];
+
   section.innerHTML += `
     <div class="book-grid">
-      ${featuredBooks.map(title => `
-        <div class="book-card">
+      ${favoriteBooks.map(title => `
+        <div class="book-card ${title.toLowerCase().replace(/ /g, '-')}">
           <h4>${title}</h4>
-          <img src="images/${title.toLowerCase().replace(/ /g, '-')}.jpg" alt="${title} cover">
+          <img src="images/${title.toLowerCase().replace(/ /g, '-')}.jpg" alt="${title} cover" loading="lazy">
           <p>${descriptions[title] || "No description available."}</p>
+          <div class="buttons">
+            <button onclick="markBook(this, 'want')">Want to Read</button>
+            <button onclick="markBook(this, 'read')">Have Read</button>
+          </div>
         </div>
       `).join('')}
     </div>`;
@@ -233,6 +243,12 @@ function shuffleArray(array) {
 
 function markBook(button, status) {
   const card = button.closest('.book-card');
+  const buttons = card.querySelectorAll('.buttons button');
+
+  buttons.forEach(btn => btn.classList.remove('active'));
+
+  button.classList.add('active');
+
   card.classList.remove('want', 'read');
   card.classList.add(status);
 }

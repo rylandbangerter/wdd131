@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
 
+
 :root {
   /* BookNook Color Palette */
   --primary-color: #666A86;         /* Payne's Gray */
@@ -188,4 +189,29 @@ label[for="genreFilter"] {
   outline: none;
   border-color: var(--accent2-color);
 }
+
+.book-card .buttons button {
+  padding: 0.5em 1em;
+  margin: 0.25em;
+  border: 2px solid var(--accent1-color);
+  border-radius: 6px;
+  font-family: var(--body-font);
+  background-color: white;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.book-card .buttons button:hover {
+  background-color: var(--accent1-color);
+  color: white;
+}
+
+.book-card .buttons button.active {
+  background-color: var(--accent1-color);
+  color: white;
+  font-weight: bold;
+  border-color: var(--accent2-color);
+}
+
 
