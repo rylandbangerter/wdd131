@@ -94,10 +94,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 const bookGrid = document.getElementById('bookGrid');
-const featuredContainer = document.getElementById('featuredBooks');
-
-window.addEventListener('DOMContentLoaded', displayRandomQuote);
-
+const featuredContainer = document.querySelector('.featured-books');
 
 const books = [
   "Shatter Me", "Unravel Me", "Ignite Me", "Restore Me", "Defy Me", "Imagine Me",
@@ -109,6 +106,43 @@ const books = [
   "A Good Girl's Guide to Murder", "Good Girl, Bad Blood", "As Good As Dead",
   "The Bodyguard"
 ];
+
+const genres = {
+  "Shatter Me": "Dystopian",
+  "Unravel Me": "Dystopian",
+  "Ignite Me": "Dystopian",
+  "Restore Me": "Dystopian",
+  "Defy Me": "Dystopian",
+  "Imagine Me": "Dystopian",
+  "The Inheritance Games": "Mystery",
+  "The Hawthorne Legacy": "Mystery",
+  "The Final Gambit": "Mystery",
+  "Powerless": "Fantasy",
+  "Reckless": "Fantasy",
+  "Fearless": "Fantasy",
+  "The Lightning Thief": "Fantasy",
+  "The Sea of Monsters": "Fantasy",
+  "The Titan's Curse": "Fantasy",
+  "The Battle of the Labyrinth": "Fantasy",
+  "The Last Olympian": "Fantasy",
+  "The Sorcerer's Stone": "Fantasy",
+  "The Chamber of Secrets": "Fantasy",
+  "The Prisoner of Azkaban": "Fantasy",
+  "The Goblet of Fire": "Fantasy",
+  "The Order of the Phoenix": "Fantasy",
+  "The Half-Blood Prince": "Fantasy",
+  "The Deathly Hallows": "Fantasy",
+  "Into the Wild": "Adventure",
+  "Fire and Ice": "Adventure",
+  "Forest of Secrets": "Adventure",
+  "Rising Storm": "Adventure",
+  "A Dangerous Path": "Adventure",
+  "The Darkest Hour": "Adventure",
+  "A Good Girl's Guide to Murder": "Thriller",
+  "Good Girl, Bad Blood": "Thriller",
+  "As Good As Dead": "Thriller",
+  "The Bodyguard": "Romance"
+};
 
 const descriptions = {
   "Shatter Me": "Juliette's touch is fatal. Imprisoned for a murder she never meant to commit, she's offered a deadly opportunity to fight for freedom.",
@@ -156,9 +190,13 @@ const descriptions = {
 
 function renderBooks() {
   if (!bookGrid) return;
-  bookGrid.innerHTML = books.map(title => `
+  const genreSelect = document.getElementById('genreFilter');
+  const selectedGenre = genreSelect ? genreSelect.value : 'All';
+  const filteredBooks = selectedGenre === 'All' ? books : books.filter(title => genres[title] === selectedGenre);
+  bookGrid.innerHTML = filteredBooks.map(title => `
     <div class="book-card">
       <h4>${title}</h4>
+      <p><strong>Genre:</strong> ${genres[title] || "Unknown"}</p>
       <img src="images/${title.toLowerCase().replace(/ /g, '-')}.jpg" alt="${title} cover">
       <p>${descriptions[title] || "No description available."}</p>
       <div class="buttons">
@@ -170,18 +208,27 @@ function renderBooks() {
 }
 
 function renderFeaturedBooks() {
-  if (!featuredContainer) return;
-  bookGrid.innerHTML = books.slice(0, 6).map(title => `
-    <div class="book-card">
-      <h4>${title}</h4>
-      <img src="images/${title.toLowerCase().replace(/ /g, '-')}.jpg" alt="${title} cover">
-      <p>${descriptions[title] || "No description available."}</p>
-      <div class="buttons">
-        <button onclick="markBook(this, 'want')">Want to Read</button>
-        <button onclick="markBook(this, 'read')">Have Read</button>
-      </div>
-    </div>
-  `).join('');
+  const section = document.querySelector('.featured-books');
+  if (!section) return;
+  const featuredBooks = shuffleArray([...books]).slice(0, 3);
+  section.innerHTML += `
+    <div class="book-grid">
+      ${featuredBooks.map(title => `
+        <div class="book-card">
+          <h4>${title}</h4>
+          <img src="images/${title.toLowerCase().replace(/ /g, '-')}.jpg" alt="${title} cover">
+          <p>${descriptions[title] || "No description available."}</p>
+        </div>
+      `).join('')}
+    </div>`;
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
 
 function markBook(button, status) {
@@ -191,3 +238,9 @@ function markBook(button, status) {
 }
 
 document.addEventListener('DOMContentLoaded', renderBooks);
+
+document.addEventListener('change', function (e) {
+  if (e.target && e.target.id === 'genreFilter') {
+    renderBooks();
+  }
+});

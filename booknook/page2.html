@@ -4,7 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BookNook | All Books</title>
     <link rel="stylesheet" href="styles/styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap"
+      rel="stylesheet"
+    />
     <script defer src="script.js"></script>
   </head>
   <body>
@@ -24,6 +27,18 @@
     <main>
       <section class="book-list">
         <h2>Explore the Shelf</h2>
+        <div class="filter-container">
+          <label for="genreFilter">Filter by Genre:</label>
+          <select id="genreFilter">
+            <option value="All">All</option>
+            <option value="Dystopian">Dystopian</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Romance">Romance</option>
+          </select>
+        </div>
         <div id="bookGrid" class="book-grid"></div>
       </section>
     </main>
