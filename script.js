@@ -146,31 +146,31 @@ const genres = {
 const descriptions = {
   "Shatter Me": "Juliette's touch is fatal. Imprisoned for a murder she never meant to commit, she's offered a deadly opportunity to fight for freedom.",
   "Unravel Me": "Juliette must make impossible choices as war looms and her power becomes harder to control.",
-  "Ignite Me": "Juliette is determined to bring down The Reestablishment—starting with the man who nearly destroyed her.",
+  "Ignite Me": "Juliette is determined to bring down The Reestablishment, starting with the man who nearly destroyed her.",
   "Restore Me": "New responsibilities and buried secrets challenge Juliette as Supreme Commander.",
   "Defy Me": "Juliette and Warner must confront their traumatic pasts as rebellion brews.",
   "Imagine Me": "Juliette is losing control of her powers, and her mind. Will she survive her final test?",
 
-  "The Inheritance Games": "Avery Grambs inherits a billionaire’s fortune—but she has no idea why. Now she’s caught in a deadly puzzle.",
+  "The Inheritance Games": "Avery Grambs inherits a billionaire’s fortune,but she has no idea why. Now she’s caught in a deadly puzzle.",
   "The Hawthorne Legacy": "As Avery unravels more clues, she discovers shocking secrets about her own identity.",
   "The Final Gambit": "The clock is ticking as Avery faces the ultimate riddle in the Hawthorne estate.",
 
-  "Powerless": "Paedyn Gray fakes being powerless in a world where powers rule—but one mistake reveals everything.",
+  "Powerless": "Paedyn Gray fakes being powerless in a world where powers rule, but one mistake reveals everything.",
   "Reckless": "On the run and hunted, Paedyn must fight for freedom and survival.",
   "Fearless": "Paedyn rises as a symbol of resistance, but the war is far from over.",
 
-  "The Lightning Thief": "Percy Jackson learns he’s the son of Poseidon—and must retrieve Zeus’ stolen lightning bolt.",
+  "The Lightning Thief": "Percy Jackson learns he’s the son of Poseidon, and must retrieve Zeus’ stolen lightning bolt.",
   "The Sea of Monsters": "Percy and friends sail into danger to find the Golden Fleece and save Camp Half-Blood.",
   "The Titan's Curse": "A rescue mission turns deadly as ancient forces awaken and gods prepare for war.",
   "The Battle of the Labyrinth": "A war strategy leads Percy deep into the treacherous Labyrinth.",
   "The Last Olympian": "It’s all-out war on Olympus, and Percy must fulfill the prophecy to save the world.",
 
-  "The Sorcerer's Stone": "Harry Potter discovers he’s a wizard—and uncovers the mystery of the Sorcerer’s Stone.",
+  "The Sorcerer's Stone": "Harry Potter discovers he’s a wizard, and uncovers the mystery of the Sorcerer’s Stone.",
   "The Chamber of Secrets": "A hidden chamber at Hogwarts unleashes dark forces and petrifies students.",
-  "The Prisoner of Azkaban": "Sirius Black escapes from prison—only to reveal truths about Harry’s past.",
-  "The Goblet of Fire": "Harry is forced into a dangerous tournament—and uncovers Voldemort’s return.",
+  "The Prisoner of Azkaban": "Sirius Black escapes from prison, only to reveal truths about Harry’s past.",
+  "The Goblet of Fire": "Harry is forced into a dangerous tournament, and uncovers Voldemort’s return.",
   "The Order of the Phoenix": "A secret order forms to resist Voldemort as Harry faces disbelief and loss.",
-  "The Half-Blood Prince": "Secrets from Voldemort’s past come to light—and a beloved mentor falls.",
+  "The Half-Blood Prince": "Secrets from Voldemort’s past come to light, and a beloved mentor falls.",
   "The Deathly Hallows": "Harry, Ron, and Hermione leave school behind to destroy the Horcruxes and end the war.",
 
   "Into the Wild": "Rusty the housecat joins ThunderClan and learns the warrior ways of the forest.",
@@ -180,11 +180,11 @@ const descriptions = {
   "A Dangerous Path": "A prophecy and an oncoming threat shake the clan to its core.",
   "The Darkest Hour": "Fireheart must become a leader and unite the clans in their darkest battle yet.",
 
-  "A Good Girl's Guide to Murder": "Pip investigates a cold case for her school project—only to find the killer may still be free.",
+  "A Good Girl's Guide to Murder": "Pip investigates a cold case for her school project, only to find the killer may still be free.",
   "Good Girl, Bad Blood": "A new mystery emerges, and Pip’s podcast leads her deeper into danger.",
-  "As Good As Dead": "Stalked and terrified, Pip must become her own investigator—and her own protector.",
+  "As Good As Dead": "Stalked and terrified, Pip must become her own investigator, and her own protector.",
 
-  "The Bodyguard": "Hannah Brooks is hired to protect a movie star—but she may be the one falling for him."
+  "The Bodyguard": "Hannah Brooks is hired to protect a movie star, but she may be the one falling for him."
 };
 
 function renderBooks() {
